@@ -1,6 +1,6 @@
 {
   "name": "egg-apidoc",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "eggPlugin": {
     "name": "apidoc"
@@ -11,10 +11,10 @@
     "egg-plugin"
   ],
   "dependencies": {
-    "apidoc": "^0.17.6",
-    "shelljs": "^0.8.1"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
+    "shelljs": "^0.8.1",
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
     "egg": "^2.4.0",
