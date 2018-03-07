@@ -9,7 +9,7 @@ module.exports = app => {
     require('shelljs').exec('npm run apidoc',
       { async: true, silent: true },
       (code, stdout, stderr) => {
-        app.coreLogger.info(`local 环境 生成doc api ${stdout} stderr:${stderr}`);
+        console.log(`local 环境 生成doc api ${stdout} stderr:${stderr}`);
       });
   }
 };
