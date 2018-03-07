@@ -11,7 +11,22 @@ module.exports = app => {
     const apiSourcePath = path.join(app.baseDir, 'app/controller');
     const apiTargetPath = path.join(app.baseDir, 'app/public/apidoc');
 
-    require('shelljs').exec(`${apiDocPath} -i ${apiSourcePath} -o ${apiTargetPath}`,
+    const inputs = [ apiSourcePath ];
+    if (typeof config.input === 'string') {
+      inputs.push(path);
+    } else if (Array.isArray(config.input)) {
+      config.input.forEach(path => {
+        if (typeof path === 'string') {
+          inputs.push(path);
+        }
+      });
+    }
+
+    const inputsStr = inputs.map(inputPath => {
+      return ` -i "${inputPath}" `;
+    });
+
+    require('shelljs').exec(`${apiDocPath} ${inputsStr} -o ${apiTargetPath}`,
       { async: true, silent: true },
       (code, stdout, stderr) => {
         app.coreLogger.info(`local 环境 生成doc api ${stdout} stderr:${stderr}`);
